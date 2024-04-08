@@ -21,7 +21,7 @@ export const allUsers = asyncHandler(async (req: Request, res: Response) => {
       }
     : {};
 
-  const userId = '';
+  const userId = req.user?._id;
 
   const users = await User.find(keyword).find({
     _id: { $ne: userId }
