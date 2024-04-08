@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
-import expressAsyncHandler from 'express-async-handler';
 import jwt from 'jsonwebtoken';
 import User from '../models/user.model';
 import { IUser } from '../interfaces/models';
+import asyncHandler from '../lib/asyncHandler';
 
 /**
  * Middleware to protect routes that require authentication.
@@ -15,7 +15,7 @@ import { IUser } from '../interfaces/models';
  * @param next - The Express next function.
  * @throws {Error} - If the token is invalid or missing.
  */
-const protect = expressAsyncHandler(
+export const protect = asyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
     let token;
 

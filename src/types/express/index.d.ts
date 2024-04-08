@@ -1,4 +1,4 @@
-import { IUser } from '../interfaces/models';
+import { IUser } from '../../interfaces/models';
 
 /**
  * Extends the Express Request interface to include a user property.
