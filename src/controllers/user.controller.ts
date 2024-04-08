@@ -23,7 +23,7 @@ export const allUsers = expressAsyncHandler(
       : {};
 
     const users = await User.find(keyword).find({
-      _id: { $ne: req?.user?._id }
+      _id: { $ne: req.user?._id }
     });
     res.send(users);
   }
