@@ -1,7 +1,11 @@
-import { Document } from 'mongoose';
+import mongoose, { Document } from 'mongoose';
 
+/**
+ * Represents a user in the system.
+ */
 interface IUser extends Document {
-  _id: IUser;
+  _id: mongoose.Types.ObjectId;
+  _doc: IUser;
   name: string;
   email: string;
   password: string;
@@ -9,11 +13,21 @@ interface IUser extends Document {
   isAdmin: boolean;
   createdAt: Date;
   updatedAt: Date;
+
+  /**
+   * Checks if the entered password matches the user's password.
+   * @param enteredPassword - The password entered by the user.
+   * @returns A promise that resolves to a boolean indicating whether the passwords match.
+   */
   matchPassword(enteredPassword: string): Promise<boolean>;
 }
 
+/**
+ * Represents a chat in the application.
+ */
 interface IChat extends Document {
-  _id: IChat;
+  _id: mongoose.Types.ObjectId;
+  _doc: IChat;
   chatName: string;
   isGroupChat: boolean;
   users: IUser[];
@@ -23,8 +37,12 @@ interface IChat extends Document {
   updatedAt: Date;
 }
 
+/**
+ * Represents a message in the chat application.
+ */
 interface IMessage extends Document {
-  _id: IMessage;
+  _id: mongoose.Types.ObjectId;
+  _doc: IMessage;
   sender: IUser;
   content: string;
   chat: IChat;
