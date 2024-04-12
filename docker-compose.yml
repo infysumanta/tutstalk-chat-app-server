@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  server:
+    container_name: tutstalk-chat-server
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    restart: always
+    ports:
+      - 7580:5500
